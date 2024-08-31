@@ -87,19 +87,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// export default Header;
-//  <div className="text-2xl font-bold">
-//           <Link href="/">Home</Link>
-//         </div>
-//         <nav className="hidden md:flex space-x-6">
-//           <Link href="/jobs" className="hover:text-gray-200">
-//             Jobs
-//           </Link>
-//           <Link href="/liked" className="hover:text-gray-200">
-//             Likes
-//           </Link>
-//           <Link href="/create-profile" className="hover:text-gray-200">
-//             Profile
-//           </Link>
-//         </nav>

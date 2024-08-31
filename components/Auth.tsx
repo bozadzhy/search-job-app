@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Link from "next/link";
 
 export interface FormData {
   name: string;
@@ -59,7 +60,14 @@ const Auth: React.FC = () => {
           We are glad to see you here!
         </p>
         <p className="text-lg text-center text-gray-600 mb-4">
-          You can go to Jobs to see the recommendations
+          You can go to
+          <Link
+            href="/jobs"
+            className="p-2 text-blue-600 rounded hover:bg-blue-100"
+          >
+            Jobs
+          </Link>
+          to see the recommendations
         </p>
         <button
           onClick={handlLogout}
