@@ -34,7 +34,7 @@ const Header = () => {
       <div
         className={`fixed top-0 right-0 h-full w-64 bg-blue-600 transform transition-transform ${
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
-        } md:translate-x-0 md:relative md:bg-transparent md:w-auto`}
+        } md:translate-x-0 md:relative md:bg-transparent md:w-auto z-10`}
       >
         <div className="flex flex-col p-4 text-white">
           <button className="self-end md:hidden" onClick={toggleSidebar}>
