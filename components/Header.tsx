@@ -10,7 +10,11 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center px-4 bg-blue-600 text-white">
-      <Link href="/" className="md:bg-white  p-2 mr-2 md:text-blue-600 rounded hover:bg-blue-100">
+      <Link
+        onClick={() => setIsSidebarOpen(false)}
+        href="/"
+        className="md:bg-white  p-2 mr-2 md:text-blue-600 rounded"
+      >
         Home
       </Link>
       <div className="md:hidden">
@@ -54,13 +58,25 @@ const Header = () => {
             </svg>
           </button>
           <div className="flex flex-nowrap">
-            <Link href="/jobs" className="bg-white p-2 mr-2 text-blue-600 rounded hover:bg-blue-100">
+            <Link
+              onClick={toggleSidebar}
+              href="/jobs"
+              className="bg-white p-2 mr-2 text-blue-600 rounded hover:bg-blue-100"
+            >
               Jobs
             </Link>
-            <Link href="/liked"  className="bg-white p-2 mr-2 text-blue-600 rounded hover:bg-blue-100">
+            <Link
+              onClick={toggleSidebar}
+              href="/liked"
+              className="bg-white p-2 mr-2 text-blue-600 rounded hover:bg-blue-100"
+            >
               Likes
             </Link>
-            <Link href="/create-profile" className="bg-white p-2 mr-2 text-blue-600 rounded hover:bg-blue-100">
+            <Link
+              onClick={toggleSidebar}
+              href="/create-profile"
+              className="bg-white p-2 mr-2 text-blue-600 rounded hover:bg-blue-100"
+            >
               Profile
             </Link>
           </div>

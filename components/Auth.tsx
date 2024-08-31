@@ -55,10 +55,10 @@ const Auth: React.FC = () => {
         <h1 className="text-5xl font-bold text-gray-500 mb-4 animate-fadeIn">
           Welcome, {user.name}!
         </h1>
-        <p className="text-lg text-gray-600 mb-4">
+        <p className="text-lg text-center text-gray-600 mb-4">
           We are glad to see you here!
         </p>
-        <p className="text-lg text-gray-600 mb-4">
+        <p className="text-lg text-center text-gray-600 mb-4">
           You can go to Jobs to see the recommendations
         </p>
         <button
