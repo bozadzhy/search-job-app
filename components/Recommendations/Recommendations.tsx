@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FormData } from "./Auth";
+import { FormData } from "../Auth/Auth";
 import useSWR from "swr";
 import { fetcher } from "@/api/api";
-import { TJobs, TJob } from "./Search";
-import JobCard from "./JobCard";
-import Search from "./Search";
+import { TJobs, TJob } from "../Search/Search";
+import JobCard from "../JobCard/JobCard";
+import Search from "../Search/Search";
 
 const Recommendations: React.FC = () => {
   const [query, setQuery] = useState<FormData>({

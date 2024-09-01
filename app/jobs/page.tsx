@@ -1,5 +1,5 @@
 import React from "react";
-import Recommendations from "@/components/Recommendations";
+import Recommendations from "@/components/Recommendations/Recommendations";
 
 const Jobs:React.FC = () => {
   return (

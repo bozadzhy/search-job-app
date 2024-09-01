@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import JobCard from "./JobCard";
+import JobCard from "../JobCard/JobCard";
 import { fetcher } from "@/api/api";
 import useSWR from "swr";
 
@@ -116,6 +116,9 @@ const Search: React.FC = () => {
             />
           ))
         : null}
+      {jobs?.data.length === 0 && (
+        <p className="text-center text-red-400 pt-4">no such jobs</p>
+      )}
     </div>
   );
 };

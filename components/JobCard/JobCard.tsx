@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { TJob } from "./Search";
+import { TJob } from "../Search/Search";
 import Link from "next/link";
 
 interface JobCardProps {
