@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { TJob } from "@/components/Search";
+import { TJob } from "../Search/Search";
 import Link from "next/link";
 
 const Likes:React.FC = () => {
