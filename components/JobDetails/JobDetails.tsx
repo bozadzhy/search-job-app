@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/api/api";
-import { TJobs } from "./Search";
+import { TJobs } from "../Search/Search";
 import { usePathname } from "next/navigation";
 
 const JobDetails: React.FC = () => {
