@@ -28,24 +28,7 @@ const Recommendations: React.FC = () => {
       : null,
     fetcher as any
   );
-  const handleLikeClick = (id: string) => {
-    const findJob = jobs?.data.find((job) => job.job_id === id);
 
-    if (!findJob) {
-      console.error("Job not found");
-      return;
-    }
-    const likedJobsStr = localStorage.getItem("liked-jobs");
-    let likedArr: TJob[] = likedJobsStr ? JSON.parse(likedJobsStr) : [];
-    const findJobInLikedArr = likedArr.find((job: TJob) => job.job_id === id);
-
-    if (!findJobInLikedArr) {
-      likedArr.push(findJob);
-    } else {
-      likedArr = likedArr.filter((job: TJob) => job.job_id !== id);
-    }
-    localStorage.setItem("liked-jobs", JSON.stringify(likedArr));
-  };
   if (isLoading)
     return <h3 className="text-center text-gray-600">Loading...</h3>;
   return (
@@ -68,7 +51,6 @@ const Recommendations: React.FC = () => {
                 <JobCard
                   key={job.job_id}
                   job={job}
-                  handleLikeClick={handleLikeClick}
                 />
               ))
             : null}
