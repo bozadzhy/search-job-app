@@ -1,14 +1,49 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TJob } from "../Search/Search";
 import Link from "next/link";
 
 interface JobCardProps {
   job: TJob;
-  handleLikeClick: (id: string) => void;
 }
 
-const JobCard: React.FC<JobCardProps> = ({ job, handleLikeClick }) => {
+const JobCard: React.FC<JobCardProps> = ({ job }) => {
+  const [likedArr, setLikedArr] = useState<TJob[]>([]);
+  const [isAdded, setIsAdded] = useState(false);
+
+  // проверяем есть ли этот обьект в локал сторидже и отрисовываем правильно
+  useEffect(() => {
+    const likedJobsStr = localStorage.getItem("liked-jobs");
+    if (likedJobsStr) {
+      const jobs = JSON.parse(likedJobsStr);
+      const findedJob = jobs.find(
+        (jobStore: TJob) => jobStore.job_id === job.job_id
+      );
+      if (findedJob) {
+        setIsAdded(true);
+      } else {
+        setIsAdded(false);
+      }
+    }
+  }, [, isAdded]);
+
+  const handleLikeClick = (id: string) => {
+    const findedJob = likedArr.find((job) => job.job_id === id);
+    if (!findedJob) {
+      setIsAdded(!isAdded);
+      const likedJobsStr = localStorage.getItem("liked-jobs");
+      let likedArr: TJob[] = likedJobsStr ? JSON.parse(likedJobsStr) : [];
+      const findJobInLikedArr = likedArr.find((job: TJob) => job.job_id === id);
+
+      if (!findJobInLikedArr) {
+        likedArr.push(job);
+      } else {
+        likedArr = likedArr.filter((job: TJob) => job.job_id !== id);
+      }
+      localStorage.setItem("liked-jobs", JSON.stringify(likedArr));
+    }
+  };
+
   return (
     <div className="mt-12 flex justify-center flex-col items-center">
       <div className="mb-4 min-w-96 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
@@ -34,7 +69,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, handleLikeClick }) => {
               onClick={() => handleLikeClick(job.job_id)}
               className="text-white rounded border p-2 bg-yellow-300 hover:bg-yellow-200 font-semibold "
             >
-              Like
+              {isAdded ? "Liked" : "Like"}
             </button>
           </div>
         </div>

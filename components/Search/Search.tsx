@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import JobCard from "../JobCard/JobCard";
 import { fetcher } from "@/api/api";
 import useSWR from "swr";
@@ -42,24 +42,6 @@ const Search: React.FC = () => {
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setQuery(inputStr);
-  };
-  const handleLikeClick = (id: string) => {
-    const findJob = jobs?.data.find((job) => job.job_id === id);
-
-    if (!findJob) {
-      console.error("Job not found");
-      return;
-    }
-    const likedJobsStr = localStorage.getItem("liked-jobs");
-    let likedArr: TJob[] = likedJobsStr ? JSON.parse(likedJobsStr) : [];
-    const findJobInLikedArr = likedArr.find((job: TJob) => job.job_id === id);
-
-    if (!findJobInLikedArr) {
-      likedArr.push(findJob);
-    } else {
-      likedArr = likedArr.filter((job: TJob) => job.job_id !== id);
-    }
-    localStorage.setItem("liked-jobs", JSON.stringify(likedArr));
   };
 
   return (
@@ -112,7 +94,8 @@ const Search: React.FC = () => {
             <JobCard
               key={job.job_id}
               job={job}
-              handleLikeClick={handleLikeClick}
+              // handleLikeClick={handleLikeClick}
+              // handleDelete={handleDelete}
             />
           ))
         : null}
